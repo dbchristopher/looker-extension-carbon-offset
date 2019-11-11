@@ -1,6 +1,8 @@
-# Extension Template with React & Typescript
+# JOIN2019 Carbon Offset Extension
 
-This repo serves as a template for developing Looker Extensions.
+Source code for an extension demo at Looker's JOIN2019 Conference. Reads a Look to gather carbon usage, sends total to Cloverly to match potential offset purchases.
+
+![carbon offset app](https://raw.githubusercontent.com/dbchristopher/looker-extension-carbon-offset/master/carbon-offset-extension.png)
 
 # Quick Start
 

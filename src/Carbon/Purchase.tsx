@@ -26,8 +26,7 @@ interface PurchaseProps {
   setCloverlyReceiptUrl: (url: SetStateAction<string>) => void;
 }
 
-// const publicKey = "629ba2f71882b63e"; // sandbox
-const publicKey = "45bcbc00aac40c2ef747"; // production
+const publicKey = "629ba2f71882b63e"; // sandbox
 
 const Purchase: FC<PurchaseProps> = ({
   carbonOffset,

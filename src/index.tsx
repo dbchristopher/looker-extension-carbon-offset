@@ -22,24 +22,20 @@
  * THE SOFTWARE.
  */
 
-import * as React from "react"
-import * as ReactDOM from "react-dom"
-import { Extension } from "./demo/Extension"
-import { ExtensionProvider } from "@looker/extension-sdk-react"
-import { theme } from '@looker/components'
-import { ThemeProvider } from 'styled-components'
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { Extension } from "./Extension";
+import { ExtensionProvider } from "@looker/extension-sdk-react";
 
-window.addEventListener("DOMContentLoaded", async (event) => {
-  var root = document.createElement("div")
-  document.body.appendChild(root)
+window.addEventListener("DOMContentLoaded", async event => {
+  var root = document.createElement("div");
+  document.body.appendChild(root);
 
   ReactDOM.render(
     // ExtensionProvider provides subcomponents access to the Looker Extension SDK
     <ExtensionProvider>
-      <ThemeProvider theme={theme}>
-        <Extension />
-      </ThemeProvider>
+      <Extension />
     </ExtensionProvider>,
     root
-  )
-})
+  );
+});

@@ -1,0 +1,6 @@
+export { default as Plane } from './Plane'
+export { default as Car } from './Car'
+export { default as CityScape } from './CityScape'
+export { default as OtherTransport } from './OtherTransport'
+export { default as Whale } from './Whale'
+export { default as mapPin } from './mapPin'

@@ -1,4 +1,4 @@
-import React, { FC, useState, useReducer } from "react";
+import React, { FC, useState, useReducer, Reducer } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { theme, palette } from "@looker/design-tokens";
 import { CityScape } from "./assets";
@@ -41,7 +41,7 @@ interface State {
   route: "purchase" | "calculate" | "view-receipt" | "offset-confirmation";
 }
 
-function formStateReducer(state: State, action: Action = { type: "" }) {
+function formStateReducer(state: State, action: Action = { type: "" }): State {
   switch (action.type) {
     case "submit":
       return { route: "purchase" };
@@ -66,9 +66,12 @@ const Carbon: FC<AppProps> = ({
 }) => {
   const [carbonOffset, setCarbonOffset] = useState(0);
   const [cloverlyReceiptUrl, setCloverlyReceiptUrl] = useState("");
-  const [formState, dispatch] = useReducer<any>(formStateReducer, {
-    route: "calculate"
-  } as State);
+  const [formState, dispatch] = useReducer<Reducer<State, Action>>(
+    formStateReducer,
+    {
+      route: "calculate"
+    } as State
+  );
 
   const handleFormSubmit = () => dispatch({ type: "submit" } as Action);
   const handleFormCancel = () => dispatch({ type: "cancel" } as Action);

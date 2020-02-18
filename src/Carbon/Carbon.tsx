@@ -33,7 +33,15 @@ interface AppProps {
   notifyUsers: () => void;
 }
 
-function formStateReducer(state: any, action = { type: "" }) {
+interface Action {
+  type: "submit" | "cancel" | "view-receipt" | "offset-confirmation" | "";
+}
+
+interface State {
+  route: "purchase" | "calculate" | "view-receipt" | "offset-confirmation";
+}
+
+function formStateReducer(state: State, action: Action = { type: "" }) {
   switch (action.type) {
     case "submit":
       return { route: "purchase" };
@@ -58,14 +66,15 @@ const Carbon: FC<AppProps> = ({
 }) => {
   const [carbonOffset, setCarbonOffset] = useState(0);
   const [cloverlyReceiptUrl, setCloverlyReceiptUrl] = useState("");
-  const [formState, dispatch] = useReducer(formStateReducer, {
+  const [formState, dispatch] = useReducer<any>(formStateReducer, {
     route: "calculate"
-  });
+  } as State);
 
-  const handleFormSubmit = () => dispatch({ type: "submit" });
-  const handleFormCancel = () => dispatch({ type: "cancel" });
-  const handlePurchase = () => dispatch({ type: "view-receipt" });
-  const handleConfirmation = () => dispatch({ type: "offset-confirmation" });
+  const handleFormSubmit = () => dispatch({ type: "submit" } as Action);
+  const handleFormCancel = () => dispatch({ type: "cancel" } as Action);
+  const handlePurchase = () => dispatch({ type: "view-receipt" } as Action);
+  const handleConfirmation = () =>
+    dispatch({ type: "offset-confirmation" } as Action);
 
   return (
     <ThemeProvider theme={lookerTheme}>
